@@ -1,4 +1,7 @@
-const key = '28233195ef7f7f6ae49f6202745c97a5';
+const main = document.getElementById('main');
+const form = document.getElementById('form');
+const search = document.getElementById('search');
+const key = '4b3cdaa8130fad303886361ec8b4926e';
 
 const api_url = (location) => `http://api.weatherstack.com/current?access_key=${key}&query=${location}`;
 /**
@@ -15,8 +18,35 @@ async function getWeatherByLocation(location) {
 
     const respData = await resp.json();
     console.log(respData, respData.current.temperature);
+
+    addWeatherToPage(respData);
 }
 
+function addWeatherToPage(data) {
+    const weather = document.createElement('div');
+    weather.classList.add('weather');
 
+    weather.innerHTML = `
+    <small>There is </small>
+    <h2>${data.current.temperature}◦C</h2>
+    <small>in ${search.value}</small>
+    `
+    //Clean up
+    main.innerHTML = '';
+
+    main.appendChild(weather);
+    
+}
+
+form.addEventListener('submit',(e)=>{
+    e.preventDefault();
+
+    const location = search.value;
+
+    if(location){
+        getWeatherByLocation(location);
+    }
+})
 getWeatherByLocation('Bauchi'); 
+
 
