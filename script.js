@@ -1,4 +1,4 @@
-const key = '0c0b8f672b46c080c2b3073b3e6a8f3e';
+const key = '28233195ef7f7f6ae49f6202745c97a5';
 
 const api_url = (location) => `http://api.weatherstack.com/current?access_key=${key}&query=${location}`;
 /**
@@ -14,7 +14,9 @@ async function getWeatherByLocation(location) {
     const resp = await fetch(api_url(location));
 
     const respData = await resp.json();
-    console.log(respData);
+    console.log(respData, respData.current.temperature);
 }
 
-getWeatherByLocation('Nigeria');
+
+getWeatherByLocation('Bauchi'); 
+
