@@ -28,8 +28,7 @@ function addWeatherToPage(data) {
 
     weather.innerHTML = `
     <h2>${data.current.temperature}˚C <img src = "${data.current.weather_icons[0]}"/></h2>
-    
-    
+    <small>${data.current.weather_descriptions}</small>
     `
     //Clean up
     main.innerHTML = '';
@@ -47,7 +46,5 @@ form.addEventListener('submit',(e)=>{
         getWeatherByLocation(location);
     }
 })
-getWeatherByLocation('Bauchi'); 
 
-// "data.current.weather_icons"
-// "https://cdn.worldweatheronline.com/images/wsymbols01_png_64/data.current.weather_icons.png"
+
