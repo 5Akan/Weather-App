@@ -1,7 +1,7 @@
 const main = document.getElementById('main');
 const form = document.getElementById('form');
 const search = document.getElementById('search');
-const key = '4b3cdaa8130fad303886361ec8b4926e';
+const key = '1dc06d1aef48c2336ab539e27950b774';
 
 const api_url = (location) => `http://api.weatherstack.com/current?access_key=${key}&query=${location}`;
 /**
@@ -27,9 +27,9 @@ function addWeatherToPage(data) {
     weather.classList.add('weather');
 
     weather.innerHTML = `
-    <small>There is </small>
-    <h2>${data.current.temperature}◦C</h2>
-    <small>in ${search.value}</small>
+    <h2>${data.current.temperature}˚C <img src = "${data.current.weather_icons[0]}"/></h2>
+    
+    
     `
     //Clean up
     main.innerHTML = '';
@@ -49,4 +49,5 @@ form.addEventListener('submit',(e)=>{
 })
 getWeatherByLocation('Bauchi'); 
 
-
+// "data.current.weather_icons"
+// "https://cdn.worldweatheronline.com/images/wsymbols01_png_64/data.current.weather_icons.png"
